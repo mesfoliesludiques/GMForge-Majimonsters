@@ -1,0 +1,1481 @@
+{
+  "info": {
+    "name": {
+      "current": "Majimonsters"
+    },
+    "img": {
+      "current": "/content/majimonsters_v2.jpg"
+    },
+    "notes": {
+      "name": "Notes"
+    }
+  },
+  "identifier": "majimonsters_v2",
+  "build": "v2",
+  "version": 1,
+  "initiative": {
+    "query": "(2d6 * ('@c.info.empower'=='0')) +  (2d8 * ('@c.info.empower'=='1')) + @c.stats.speed",
+    "compare": "(@i1.total>@i2.total)?(1):((@i1.total==@i2.total)?(0):(-1))"
+  },
+  "actors": {
+    "Character": {
+      "0": {},
+      "_t": "c",
+      "_type": "Character",
+      "info": {
+        "name": {
+          "name": "Name",
+          "current": "Default Binder "
+        },
+        "img": {
+          "name": "Character Art",
+          "current": ""
+        },
+        "notes": {
+          "name": "Character Notes",
+          "current": ""
+        },
+        "class": {
+          "current": ""
+        },
+        "archetype": {
+          "current": ""
+        },
+        "background": {
+          "current": ""
+        },
+        "gender": {},
+        "age": {},
+        "weight": {},
+        "skin": {},
+        "hair": {},
+        "eye": {},
+        "target": {},
+        "action": {},
+        "tab": {
+          "current": 0
+        },
+        "imperials": {
+          "current": "0"
+        },
+        "suls": {
+          "current": "0"
+        },
+        "eyes": {
+          "current": "0"
+        },
+        "hb_active": {
+          "current": "interaction"
+        }
+      },
+      "_hud": {
+        "skills": {
+          "hot": 1,
+          "display": "<ui name=\"mm_binder_hotbar\" />"
+        }
+      },
+      "_flags": {},
+      "stats": {
+        "undefined": {
+          "info": {
+            "notes": {}
+          }
+        },
+        "authority": {
+          "current": "0"
+        },
+        "interaction": {
+          "current": "0"
+        },
+        "knowledge": {
+          "current": "0"
+        },
+        "vigor": {
+          "current": "0"
+        },
+        "hp": {
+          "current": "20"
+        },
+        "hpmax": {
+          "current": "20"
+        },
+        "health": {
+          "current": "1"
+        },
+        "strike": {
+          "current": "1"
+        },
+        "protection": {
+          "current": "6"
+        },
+        "magic": {
+          "current": "1"
+        },
+        "discipline": {
+          "current": "6"
+        },
+        "speed": {
+          "current": "1"
+        }
+      },
+      "skills": {
+        "guile": {
+          "current": "0",
+          "name": "Guile",
+          "short": "Gui"
+        },
+        "perception": {
+          "current": "0",
+          "name": "Perception",
+          "short": "Perc"
+        },
+        "persuasion": {
+          "current": "0",
+          "name": "Persuasion",
+          "short": "Pers"
+        },
+        "wits": {
+          "current": "0",
+          "name": "Wits",
+          "short": "Wits"
+        },
+        "education": {
+          "current": "0",
+          "name": "Education",
+          "short": "Educ"
+        },
+        "intuition": {
+          "current": "0",
+          "name": "Intuition",
+          "short": "Intu"
+        },
+        "proficiency": {
+          "current": "0",
+          "name": "Proficiency",
+          "short": "Prof"
+        },
+        "survival": {
+          "current": "0",
+          "name": "Survival",
+          "short": "Surv"
+        },
+        "athletics": {
+          "current": "0",
+          "name": "Athletics",
+          "short": "Athl"
+        },
+        "fortitude": {
+          "current": "0",
+          "name": "Fortitude",
+          "short": "Fort"
+        },
+        "strength": {
+          "current": "0",
+          "name": "Strength",
+          "short": "Str"
+        },
+        "willpower": {
+          "current": "0",
+          "name": "Willpower",
+          "short": "Will"
+        }
+      },
+      "traits": {},
+      "_calc": [],
+      "counters": {
+        "wounds": {
+          "current": "",
+          "max": "",
+          "min": ""
+        }
+      },
+      "inventory": [],
+      "features": [],
+      "drajules": [],
+      "custom_counters": {}
+    },
+    "Majimonster": {
+      "_t": "c",
+      "_type": "Majimonster",
+      "info": {
+        "name": {
+          "name": "Name",
+          "current": "Majimonster"
+        },
+        "img": {
+          "name": "Art",
+          "current": ""
+        },
+        "notes": {
+          "name": "Notes"
+        },
+        "size": {
+          "current": "Medium"
+        },
+        "gender": {
+          "current": "female"
+        },
+        "empower": {
+          "current": 0
+        },
+        "weight": {}
+      },
+      "_flags": {},
+      "stats": {
+        "level": {
+          "current": "1"
+        },
+        "grade": {
+          "current": "1"
+        },
+        "grit": {
+          "current": "0"
+        },
+        "gritmax": {
+          "current": "0"
+        },
+        "health": {
+          "current": "0"
+        },
+        "strike": {
+          "current": "0"
+        },
+        "protection": {
+          "current": "0"
+        },
+        "magic": {
+          "current": "0"
+        },
+        "discipline": {
+          "current": "0"
+        },
+        "speed": {
+          "current": "0"
+        },
+        "brawn": {
+          "current": "0"
+        },
+        "talent": {
+          "current": "0"
+        },
+        "affinity": {
+          "current": "2"
+        },
+        "hp": {
+          "current": "0"
+        },
+        "hpmax": {
+          "current": "0"
+        },
+        "resistance": {
+          "current": "2"
+        },
+        "xp": {
+          "current": "0"
+        },
+        "authority": {},
+        "interaction": {},
+        "knowledge": {},
+        "vigor": {}
+      },
+      "counters": {
+        "wounds": {
+          "current": "",
+          "max": "",
+          "min": ""
+        }
+      },
+      "_calc": [
+        {
+          "target": "stats.grade",
+          "cond": "",
+          "eq": " @:int(1 + (@level - 1)/4)"
+        },
+        {
+          "target": "stats.affinity",
+          "cond": "",
+          "eq": "@grade*2"
+        },
+        {
+          "target": "stats.resistance",
+          "cond": "",
+          "eq": "@grade*2"
+        }
+      ],
+      "empower": 1,
+      "traits": [],
+      "techniques": [],
+      "vulnerabilities": {},
+      "affinities": {},
+      "resistances": {},
+      "_hud": {
+        "stats": {
+          "hot": 1,
+          "display": "<ui name=\"mm_majimonster_hotbar\" />"
+        }
+      }
+    }
+  },
+  "elements": {
+    "Item": {
+      "_t": "i",
+      "_type": "Item",
+      "_drop": "inventory",
+      "info": {
+        "name": {
+          "name": "Name",
+          "current": "Default Item"
+        },
+        "img": {
+          "name": "Item Art",
+          "current": ""
+        },
+        "notes": {
+          "name": "Item Notes",
+          "current": "<p><br data-mce-bogus=\"1\"></p>"
+        },
+        "description": {},
+        "target": {},
+        "tier": {},
+        "attack": {},
+        "defense": {},
+        "element": {},
+        "reach": {},
+        "descriptor": {},
+        "action": {},
+        "weight": {
+          "current": "0"
+        },
+        "cost": {
+          "current": "0 Suls"
+        }
+      },
+      "_hud": {},
+      "inventory": {}
+    },
+    "Technique": {
+      "_t": "i",
+      "_type": "Technique",
+      "_drop": "techniques",
+      "info": {
+        "name": {
+          "name": "Name",
+          "current": "Default Technique"
+        },
+        "img": {
+          "name": "Art",
+          "current": "/content/affinities/Basic.png"
+        },
+        "notes": {
+          "name": "Notes",
+          "current": "<p><br data-mce-bogus=\"1\"></p>"
+        },
+        "attack": {
+          "current": "Strike",
+          "name": "Attack"
+        },
+        "defense": {
+          "current": "Protection",
+          "name": "Defense"
+        },
+        "tier": {
+          "current": "T1",
+          "name": "Tier"
+        },
+        "target": {
+          "name": "Target"
+        },
+        "description": {
+          "name": "Description",
+          "current": ""
+        },
+        "element": {
+          "current": "Basic",
+          "name": "Element"
+        },
+        "reach": {
+          "current": "Melee"
+        },
+        "descriptor": {
+          "current": "Bite"
+        },
+        "action": {
+          "current": "No action"
+        },
+        "damage_number": {
+          "current": "1"
+        },
+        "damage_die": {
+          "current": "6"
+        },
+        "damage_bonus": {
+          "current": "Brawn"
+        },
+        "trigger_save": {},
+        "trigger_threshold": {
+          "current": "6"
+        },
+        "trigger_condition": {
+          "current": "Bleeding"
+        }
+      },
+      "_calc": [],
+      "current": "Strike",
+      "inventory": {
+        "%index%": {
+          "info": {}
+        }
+      }
+    },
+    "Feature": {
+      "_t": "i",
+      "_type": "Feature",
+      "_drop": "features",
+      "info": {
+        "name": {
+          "name": "Name",
+          "current": "Default Feature"
+        },
+        "img": {
+          "name": "Art",
+          "current": "/content/icons/Scroll1000p.png"
+        },
+        "notes": {
+          "name": "Notes",
+          "current": ""
+        }
+      }
+    },
+    "Trait": {
+      "_t": "i",
+      "_type": "Trait",
+      "_drop": "traits",
+      "info": {
+        "name": {
+          "name": "Name",
+          "current": "Default Trait"
+        },
+        "img": {
+          "name": "Art",
+          "current": "/content/icons/Scroll1000p.png"
+        },
+        "notes": {
+          "name": "Notes",
+          "current": ""
+        }
+      }
+    },
+    "Drajule": {
+      "_t": "i",
+      "_type": "Drajule",
+      "_drop": "drajules",
+      "info": {
+        "name": {
+          "name": "Name",
+          "current": "Default Drajule"
+        },
+        "img": {
+          "name": "Art",
+          "current": "/content/icons/drajule1.png"
+        },
+        "notes": {
+          "name": "Notes",
+          "current": "<p><br data-mce-bogus=\"1\"></p>"
+        },
+        "weight": {},
+        "cost": {},
+        "active": {
+          "current": "active"
+        }
+      },
+      "current": "Active"
+    }
+  },
+  "page": {
+    "_t": "p",
+    "info": {
+      "name": {
+        "name": "Name",
+        "current": "Default Page"
+      },
+      "img": {
+        "name": "Art"
+      },
+      "notes": {
+        "name": "Notes",
+        "modifiers": {
+          "style": {
+            "font-family": "shruti"
+          },
+          "HR": "rgb(4,108,101)",
+          "H1F": "Nodesto_Caps_Condensed",
+          "H1FS": 3.1,
+          "H1C": "rgb(4,108,101)",
+          "H1S": null,
+          "H2F": "Nodesto_Caps_Condensed",
+          "H2FS": 2
+        }
+      },
+      "mode": {
+        "name": "Mode"
+      }
+    }
+  },
+  "security": {
+    "player": {
+      "Game Master": 1,
+      "Assistant Master": 2,
+      "Trusted Player": 3,
+      "Player": 4,
+      "Spectator": 5
+    },
+    "object": {
+      "Default Access": 0,
+      "Owner": 1,
+      "Rights": 2,
+      "Visible": 3,
+      "Deny": 4
+    }
+  },
+  "constants": {
+    "xpl": "1d6x6"
+  },
+  "tables": {},
+  "tags": {},
+  "effects": {},
+  "display": {
+    "actors": {
+      "Character": {
+        "content": "<ui name=\"mm_binder\"/>"
+      },
+      "Majimonster": {
+        "style": {},
+        "content": "<ui name=\"mm_majimonster\"/>"
+      }
+    },
+    "elements": {
+      "Item": {
+        "content": "<ui name=\"mm_item\"/>"
+      },
+      "Technique": {
+        "content": "<ui name=\"mm_technique\"/>"
+      },
+      "Feature": {
+        "content": "<ui name=\"mm_feature\"/>"
+      },
+      "Trait": {
+        "content": "<ui name=\"mm_trait\"/>"
+      },
+      "Drajule": {
+        "content": "<ui name=\"mm_drajule\"/>"
+      }
+    },
+    "ui": {
+      "ui_poolResults": {
+        "classes": "flexrow flexaround",
+        "dice": {
+          "width": "30px",
+          "height": "30px"
+        },
+        "results": {
+          "style": {
+            "width": "50%",
+            "background-color": "grey"
+          },
+          "display": {
+            "classes": "flexrow flexaround flex",
+            "display": [
+              {
+                "classes": "flexmiddle",
+                "cond": "(@pool.s-@pool.f)>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/success.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+(@pool.s-@pool.f)"
+                  }
+                ]
+              },
+              {
+                "classes": "flexmiddle",
+                "cond": "(@pool.f-@pool.s)>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/failure.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+(@pool.f-@pool.s)"
+                  }
+                ]
+              },
+              {
+                "classes": "flexmiddle",
+                "cond": "(@pool.a-@pool.t)>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/advantage.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+(@pool.a-@pool.t)"
+                  }
+                ]
+              },
+              {
+                "classes": "flexmiddle",
+                "cond": "(@pool.t-@pool.a)>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/threat.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+(@pool.t-@pool.a)"
+                  }
+                ]
+              },
+              {
+                "classes": "flexmiddle",
+                "cond": "@pool.tri>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/triumph.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+@pool.tri"
+                  }
+                ]
+              },
+              {
+                "classes": "flexmiddle",
+                "cond": "@pool.des>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/despair.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+@pool.des"
+                  }
+                ]
+              },
+              {
+                "classes": "flexmiddle",
+                "cond": "(@pool.light-@pool.dark)>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/lightside.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+(@pool.light-@pool.dark)"
+                  }
+                ]
+              },
+              {
+                "classes": "flexmiddle",
+                "cond": "(@pool.dark-@pool.light)>0",
+                "ui": "ui_icon",
+                "scope": {
+                  "image": "/content/dice/darkside.png"
+                },
+                "display": [
+                  {
+                    "style": {
+                      "font-weight": "bold"
+                    },
+                    "value": "'x'+(@pool.dark-@pool.light)"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "display": {
+          "classes": "outline lrpadding flexrow flexmiddle flexwrap flex"
+        }
+      },
+      "ui_skillroll": {
+        "classes": "flexrow flexaround",
+        "dice": {
+          "top": "",
+          "results": [
+            {
+              "classes": "focus outline",
+              "top": "",
+              "cond": "@total<3",
+              "bottom": "'Failure'"
+            },
+            {
+              "classes": "focus outline",
+              "top": "",
+              "cond": "@total>=3 && @total<5",
+              "bottom": "'Very Easy'"
+            },
+            {
+              "classes": "focus outline",
+              "top": "",
+              "cond": "@total>=5 && @total<7",
+              "bottom": "'Easy'"
+            },
+            {
+              "classes": "focus outline",
+              "top": "",
+              "cond": "@total>=7 && @total<9",
+              "bottom": "'Normal'"
+            },
+            {
+              "classes": "focus outline",
+              "top": "",
+              "cond": "@total>=9 && @total<11",
+              "bottom": "'Hard'"
+            },
+            {
+              "classes": "focus outline",
+              "top": "",
+              "cond": "@total>=11",
+              "bottom": "'Hard'"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "grid": {},
+  "dice": {
+    "defaults": [
+      "d20",
+      "2d6",
+      "2d8"
+    ],
+    "modifiers": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "keys": {
+      "a": {
+        "name": "Advantage",
+        "img": "/content/dice/advantage.png"
+      },
+      "f": {
+        "name": "Failure",
+        "img": "/content/dice/failure.png"
+      },
+      "s": {
+        "name": "Success",
+        "img": "/content/dice/success.png"
+      },
+      "t": {
+        "name": "Threat",
+        "img": "/content/dice/threat.png"
+      },
+      "tri": {
+        "name": "Triumph",
+        "img": "/content/dice/triumph.png"
+      },
+      "des": {
+        "name": "Despair",
+        "img": "/content/dice/despair.png"
+      },
+      "light": {
+        "name": "Light",
+        "img": "/content/dice/lightside.png"
+      },
+      "dark": {
+        "name": "Dark",
+        "img": "/content/dice/darkside.png"
+      },
+      "minus": {
+        "name": "Minus",
+        "img": "/content/dice/minus.png"
+      },
+      "plus": {
+        "name": "Plus",
+        "img": "/content/dice/plus.png"
+      }
+    },
+    "pool": {
+      "d2": {
+        "value": "d2"
+      },
+      "d4": {
+        "value": "d4"
+      },
+      "d5": {
+        "value": "d5"
+      },
+      "d6": {
+        "value": "d6"
+      },
+      "d8": {
+        "value": "d8"
+      },
+      "d10": {
+        "value": "d10"
+      },
+      "d12": {
+        "value": "d12"
+      },
+      "d20": {
+        "value": "d20"
+      },
+      "d100": {
+        "value": "d100"
+      },
+      "2d6": {
+        "value": "2d6"
+      },
+      "2d8": {
+        "value": "2d8"
+      },
+      "proficiency": {
+        "static": true,
+        "value": "d12",
+        "display": {
+          "background-color": "rgb(255,230,0)",
+          "border": "1px solid black",
+          "color": "black"
+        },
+        "results": {
+          "1": {
+            "a": 2
+          },
+          "2": {
+            "a": 1
+          },
+          "3": {
+            "a": 2
+          },
+          "4": {
+            "tri": 1,
+            "s": 1
+          },
+          "5": {
+            "s": 1
+          },
+          "6": {
+            "s": 1,
+            "a": 1
+          },
+          "7": {
+            "s": 1
+          },
+          "8": {
+            "s": 1,
+            "a": 1
+          },
+          "9": {
+            "s": 2
+          },
+          "10": {
+            "s": 1,
+            "a": 1
+          },
+          "11": {
+            "s": 2
+          }
+        },
+        "translations": {
+          "1": {
+            "imgs": [
+              "/content/dice/advantage.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "2": {
+            "imgs": [
+              "/content/dice/advantage.png"
+            ]
+          },
+          "3": {
+            "imgs": [
+              "/content/dice/advantage.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "4": {
+            "imgs": [
+              "/content/dice/triumph.png"
+            ]
+          },
+          "5": {
+            "imgs": [
+              "/content/dice/success.png"
+            ]
+          },
+          "6": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "7": {
+            "imgs": [
+              "/content/dice/success.png"
+            ]
+          },
+          "8": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "9": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/success.png"
+            ]
+          },
+          "10": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "11": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/success.png"
+            ]
+          },
+          "12": {
+            "imgs": []
+          }
+        }
+      },
+      "ability": {
+        "static": true,
+        "value": "d8",
+        "display": {
+          "background-color": "rgb(80,185,75)",
+          "border": "1px solid black"
+        },
+        "results": {
+          "1": {
+            "s": 1
+          },
+          "2": {
+            "a": 1
+          },
+          "3": {
+            "s": 1,
+            "a": 1
+          },
+          "4": {
+            "s": 2
+          },
+          "5": {
+            "a": 1
+          },
+          "6": {
+            "s": 1
+          },
+          "7": {
+            "a": 2
+          }
+        },
+        "translations": {
+          "1": {
+            "imgs": [
+              "/content/dice/success.png"
+            ]
+          },
+          "2": {
+            "imgs": [
+              "/content/dice/advantage.png"
+            ]
+          },
+          "3": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "4": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/success.png"
+            ]
+          },
+          "5": {
+            "imgs": [
+              "/content/dice/advantage.png"
+            ]
+          },
+          "6": {
+            "imgs": [
+              "/content/dice/success.png"
+            ]
+          },
+          "7": {
+            "imgs": [
+              "/content/dice/advantage.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "8": {}
+        }
+      },
+      "boost": {
+        "static": true,
+        "value": "d6",
+        "display": {
+          "background-color": "rgb(135,215,245)",
+          "border": "1px solid black"
+        },
+        "results": {
+          "1": {
+            "s": 1,
+            "a": 1
+          },
+          "2": {
+            "a": 1
+          },
+          "3": {
+            "a": 2
+          },
+          "4": {
+            "s": 1
+          }
+        },
+        "translations": {
+          "1": {
+            "imgs": [
+              "/content/dice/success.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "2": {
+            "imgs": [
+              "/content/dice/advantage.png"
+            ]
+          },
+          "3": {
+            "imgs": [
+              "/content/dice/advantage.png",
+              "/content/dice/advantage.png"
+            ]
+          },
+          "4": {
+            "imgs": [
+              "/content/dice/success.png"
+            ]
+          },
+          "5": {},
+          "6": {}
+        }
+      },
+      "challenge": {
+        "static": true,
+        "value": "d12",
+        "display": {
+          "background-color": "rgb(230,25,55)",
+          "border": "1px solid black"
+        },
+        "results": {
+          "1": {
+            "t": 2
+          },
+          "2": {
+            "t": 1
+          },
+          "3": {
+            "t": 2
+          },
+          "4": {
+            "t": 1
+          },
+          "5": {
+            "f": 1,
+            "t": 1
+          },
+          "6": {
+            "f": 1
+          },
+          "7": {
+            "f": 1,
+            "t": 1
+          },
+          "8": {
+            "f": 1
+          },
+          "9": {
+            "des": 1,
+            "f": 1
+          },
+          "10": {
+            "f": 2
+          },
+          "11": {
+            "f": 2
+          }
+        },
+        "translations": {
+          "1": {
+            "imgs": [
+              "/content/dice/threat.png",
+              "/content/dice/threat.png"
+            ]
+          },
+          "2": {
+            "imgs": [
+              "/content/dice/threat.png"
+            ]
+          },
+          "3": {
+            "imgs": [
+              "/content/dice/threat.png",
+              "/content/dice/threat.png"
+            ]
+          },
+          "4": {
+            "imgs": [
+              "/content/dice/threat.png"
+            ]
+          },
+          "5": {
+            "imgs": [
+              "/content/dice/failure.png",
+              "/content/dice/threat.png"
+            ]
+          },
+          "6": {
+            "imgs": [
+              "/content/dice/failure.png"
+            ]
+          },
+          "7": {
+            "imgs": [
+              "/content/dice/failure.png",
+              "/content/dice/threat.png"
+            ]
+          },
+          "8": {
+            "imgs": [
+              "/content/dice/failure.png"
+            ]
+          },
+          "9": {
+            "imgs": [
+              "/content/dice/despair.png"
+            ]
+          },
+          "10": {
+            "imgs": [
+              "/content/dice/failure.png",
+              "/content/dice/failure.png"
+            ]
+          },
+          "11": {
+            "imgs": [
+              "/content/dice/failure.png",
+              "/content/dice/failure.png"
+            ]
+          },
+          "12": {
+            "imgs": []
+          }
+        }
+      },
+      "difficulty": {
+        "static": true,
+        "value": "d8",
+        "display": {
+          "background-color": "rgb(85,35,130)",
+          "border": "1px solid black"
+        },
+        "results": {
+          "1": {
+            "t": 1
+          },
+          "2": {
+            "f": 1
+          },
+          "3": {
+            "f": 1,
+            "t": 1
+          },
+          "4": {
+            "t": 1
+          },
+          "6": {
+            "t": 2
+          },
+          "7": {
+            "f": 2
+          },
+          "8": {
+            "t": 1
+          }
+        },
+        "translations": {
+          "1": {
+            "imgs": [
+              "/content/dice/threat.png"
+            ]
+          },
+          "2": {
+            "imgs": [
+              "/content/dice/failure.png"
+            ]
+          },
+          "3": {
+            "imgs": [
+              "/content/dice/failure.png",
+              "/content/dice/threat.png"
+            ]
+          },
+          "4": {
+            "imgs": [
+              "/content/dice/threat.png"
+            ]
+          },
+          "5": {
+            "imgs": []
+          },
+          "6": {
+            "imgs": [
+              "/content/dice/threat.png",
+              "/content/dice/threat.png"
+            ]
+          },
+          "7": {
+            "imgs": [
+              "/content/dice/failure.png",
+              "/content/dice/failure.png"
+            ]
+          },
+          "8": {
+            "imgs": [
+              "/content/dice/threat.png"
+            ]
+          }
+        }
+      },
+      "setback": {
+        "static": true,
+        "value": "d6",
+        "display": {
+          "background-color": "black",
+          "border": "1px solid black"
+        },
+        "results": {
+          "1": {
+            "f": 1
+          },
+          "2": {
+            "f": 1
+          },
+          "3": {
+            "t": 1
+          },
+          "4": {
+            "t": 1
+          }
+        },
+        "translations": {
+          "1": {
+            "imgs": [
+              "/content/dice/failure.png"
+            ],
+            "f": 1
+          },
+          "2": {
+            "imgs": [
+              "/content/dice/failure.png"
+            ],
+            "f": 1
+          },
+          "3": {
+            "imgs": [
+              "/content/dice/threat.png"
+            ],
+            "t": 1
+          },
+          "4": {
+            "imgs": [
+              "/content/dice/threat.png"
+            ],
+            "t": 1
+          },
+          "5": {},
+          "6": {}
+        }
+      },
+      "force": {
+        "static": true,
+        "value": "d12",
+        "display": {
+          "background-color": "white",
+          "border": "1px solid black",
+          "color": "black"
+        },
+        "results": {
+          "1": {
+            "dark": 1
+          },
+          "2": {
+            "light": 2
+          },
+          "3": {
+            "dark": 1
+          },
+          "4": {
+            "light": 2
+          },
+          "5": {
+            "dark": 1
+          },
+          "6": {
+            "light": 2
+          },
+          "7": {
+            "dark": 1
+          },
+          "8": {
+            "light": 1
+          },
+          "9": {
+            "dark": 1
+          },
+          "10": {
+            "light": 1
+          },
+          "11": {
+            "dark": 1
+          },
+          "12": {
+            "dark": 2
+          }
+        },
+        "translations": {
+          "1": {
+            "imgs": [
+              "/content/dice/darkside.png"
+            ]
+          },
+          "2": {
+            "imgs": [
+              "/content/dice/lightside.png",
+              "/content/dice/lightside.png"
+            ]
+          },
+          "3": {
+            "imgs": [
+              "/content/dice/darkside.png"
+            ]
+          },
+          "4": {
+            "imgs": [
+              "/content/dice/lightside.png",
+              "/content/dice/lightside.png"
+            ]
+          },
+          "5": {
+            "imgs": [
+              "/content/dice/darkside.png"
+            ]
+          },
+          "6": {
+            "imgs": [
+              "/content/dice/lightside.png",
+              "/content/dice/lightside.png"
+            ]
+          },
+          "7": {
+            "imgs": [
+              "/content/dice/darkside.png"
+            ]
+          },
+          "8": {
+            "imgs": [
+              "/content/dice/lightside.png"
+            ]
+          },
+          "9": {
+            "imgs": [
+              "/content/dice/darkside.png"
+            ]
+          },
+          "10": {
+            "imgs": [
+              "/content/dice/lightside.png"
+            ]
+          },
+          "11": {
+            "imgs": [
+              "/content/dice/darkside.png"
+            ]
+          },
+          "12": {
+            "imgs": [
+              "/content/dice/darkside.png",
+              "/content/dice/darkside.png"
+            ]
+          }
+        }
+      },
+      "fate": {
+        "value": "(d3-2)",
+        "results": {
+          "0": {},
+          "1": {
+            "plus": 1
+          },
+          "-1": {
+            "minus": 1
+          }
+        },
+        "translations": {
+          "0": {},
+          "1": {
+            "imgs": [
+              "/content/dice/plus.png"
+            ],
+            "plus": 1
+          },
+          "-1": {
+            "imgs": [
+              "/content/dice/minus.png"
+            ],
+            "minus": 1
+          }
+        }
+      }
+    }
+  }
+}

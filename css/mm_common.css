@@ -1,0 +1,92 @@
+/* GLOBAL STYLES */
+
+@font-face {
+    font-family: "Highwaygothic";
+    src: url("/fonts/highwaygothic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Shruti";
+    src: url("/fonts/shruti.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "Feast";
+    src: url("/fonts/feastoffleshbb.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "Chaparral";
+    src: url("/fonts/chaparralpro.otf") format("truetype");
+}
+
+@font-face {
+    font-family: "Chaparralbold";
+    src: url("/fonts/chaparralprob.otf") format("truetype");
+}
+
+
+.mm_chat_vs{
+  background-color: #046C65;
+  border-radius: 8px;
+  color: white;
+  font-size: 12px;
+  width: 60%;
+  padding: 8px 8px 2px 8px;
+  margin: 5px auto 5px auto;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.mm_chat_title{
+  margin-bottom: 2px;
+  font-weight: normal;
+  font-style: italic;
+  text-align: center !important;
+}
+
+.mm_chat_vs div{
+  align-self: stretch;
+}
+
+.mm_thumbnail{
+  width: 26px;
+  height: 26px;
+  margin: auto;
+}
+
+.mm_select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-overflow: '';
+    background: none;
+    border: none;
+    width: auto;
+    text-align-last: center;
+    text-align: center !important;
+    padding: 3px;
+}
+
+.mm_input {
+    text-align: center !important;
+}
+
+.mm_input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+.mm_input[type=number]::-webkit-inner-spin-button,
+.mm_input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.mm_input:not([type=checkbox]) {
+    border: none;
+    background: none;
+}

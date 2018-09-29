@@ -1,0 +1,785 @@
+<div class='flex flexcolumn mm_monster-sheet'>
+  <div class="flexrow mm_part1">
+    <div class="flexcolumn">
+      <div class="flexrow padding mm_wide">
+        <input class='mm_input line lrmargin mm_name-mstr' target='info.name' placeholder="Name" />
+        <div class="mm_gender" style="color: blueviolet;" cond="'@gender'=='female'">
+          ♀
+          <click>
+            <setAttr target="info.gender" value="male" />
+          </click>
+        </div>
+        <div class="mm_gender" style="color: blue;" cond="'@gender'=='male'">
+          ♂
+          <click>
+            <setAttr target="info.gender" value="female" />
+          </click>
+        </div>
+      </div>
+      <div class="flexrow">
+        <div class="flexcolumn mm_secondary-stat">
+          <label class="mm_stat-label">Level</label>
+          <input type="number" class='mm_stat-value mm_input' target='stats.level' />
+        </div>
+        <div class="mm_counter-stat">
+          <label class="mm_stat-label">Hit points</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.hp' /> /
+          <input type="number" class='mm_input  mm_stat-value' target='stats.hpmax' />
+        </div>
+        <div class="mm_counter-stat">
+          <label class="mm_stat-label">Size</label>
+          <select class="mm_xp-value mm_select" target="info.size">
+            <option>Tiny</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>Huge</option>
+          </select>
+        </div>
+      </div>
+      <div class="flexrow">
+        <div class="flexcolumn mm_secondary-stat">
+          <label class="mm_stat-label">Grade</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.grade' />
+        </div>
+        <div class="mm_counter-stat">
+          <label class="mm_stat-label">Grit</label>
+          <input type="number" class='mm_input mm_stat-value' target='stats.grit' /> /
+          <input type="number" class='mm_input mm_stat-value' target='stats.gritmax' />
+        </div>
+        <div class="mm_empower" cond="eval{'@empower'!='1'}">
+          <img class="mm_empower-icon" src="/content/icons/empower.png">
+          <click>
+            <setAttr target="info.empower.current" value='1' />
+          </click>
+        </div>
+        <div class="mm_empower" cond="eval{'@empower'=='1'}">
+          <img class="mm_empower-icon-down" src="/content/icons/empower.png">
+          <click>
+            <setAttr target="info.empower.current" value='0' />
+          </click>
+        </div>
+        <div class="mm_xp-stat">
+          <label class="mm_stat-label">XP</label>
+          <input type="number" class='mm_input mm_stat-value mm_xp-value-mm' target='stats.xp' />
+        </div>
+      </div>
+    </div>
+    <div class="flexcolumn">
+      <div class="flexrow padding mm_majiportrait" style="position:relative;">
+        <ui name='ui_image' />
+        <ui name="ui_token" style="position:absolute;width:80px;height:80px;top:108px;left:104px;" />
+      </div>
+    </div>
+  </div>
+  <div class="flex flexrow mm_part2mm">
+    <div class="flexcolumn">
+      <div class="hover flexrow mm_rotated">
+        <span>Notes</span>
+        <click>
+          <setAttr target="info.tab" value="0" />
+        </click>
+      </div>
+      <div class="hover flexrow mm_rotated">
+        <span>Stats</span>
+        <click>
+          <setAttr target="info.tab" value="1" />
+        </click>
+      </div>
+      <div class="hover flexrow mm_rotated">
+        <span>Traits</span>
+        <click>
+          <setAttr target="info.tab" value="2" />
+        </click>
+      </div>
+      <div class="hover flexrow mm_rotated">
+        <span>Techniques</span>
+        <click>
+          <setAttr target="info.tab" value="3" />
+        </click>
+      </div>
+    </div>
+    <div class="flexcolumn mm_mmtabs" cond="@tab==0">
+      <div class="flex flexrow mm_rawnotes">
+        <ui name="ui_rawNotesv2" />
+      </div>
+    </div>
+    <div class="flexcolumn mm_mmtabs" cond="@tab==1">
+      <div class="flexrow mm_stats-row flexmiddle">
+        <div class="mm_stat">
+          <label class="mm_stat-label">Health</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.health' />
+          <div class="mm_modified">eval{@health}</div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input  mm_narrow" target="stats.health" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+        <div class="mm_stat">
+          <label class="mm_stat-label">Strike</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.strike' />
+          <div class="mm_modified">eval{@strike}</div>
+          <div class="mm_die-mstr" cond="eval{'@empower'!='1'}">
+            <img src="/content/icons/d6s.png">
+            <click>
+              <chat roll="2d6+eval{@strike}">
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      <div class="flexcolumn">
+                        <img src="/content/stats/strike.png" class="mm_affinity-icon" />
+                      </div>
+                      <div class="flexcolumn">
+                        eval{@name} rolls his Strike and gets eval{'@result'}!
+                      </div>
+                    </div>
+                  </div>
+                </display>
+              </chat>
+            </click>
+          </div>
+          <div class="mm_die-mstr" cond="eval{'@empower'=='1'}">
+            <img src="/content/icons/d8s.png">
+            <click>
+              <chat roll="2d8+eval{@strike}">
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      <div class="flexcolumn">
+                        <img src="/content/stats/strike.png" class="mm_affinity-icon" />
+                      </div>
+                      <div class="flexcolumn">
+                        eval{@name} rolls his empowered Strike and gets eval{'@result'}!
+                      </div>
+                    </div>
+                  </div>
+                </display>
+              </chat>
+            </click>
+          </div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input  mm_narrow" target="stats.strike" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+        <div class="mm_stat">
+          <label class="mm_stat-label">Magic</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.magic' />
+          <div class="mm_modified">eval{@magic}</div>
+          <div class="mm_die-mstr" cond="eval{'@empower'!='1'}">
+            <img src="/content/icons/d6s.png">
+            <click>
+              <chat roll="2d6+eval{@magic}">
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      <div class="flexcolumn">
+                        <img src="/content/stats/magic.png" class="mm_affinity-icon" />
+                      </div>
+                      <div class="flexcolumn">
+                        eval{@name} rolls his Magic and gets eval{'@result'}!
+                      </div>
+                    </div>
+                  </div>
+                </display>
+              </chat>
+            </click>
+          </div>
+          <div class="mm_die-mstr" cond="eval{'@empower'=='1'}">
+            <img src="/content/icons/d8s.png">
+            <click>
+              <chat roll="2d8+eval{@magic}">
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      <div class="flexcolumn">
+                        <img src="/content/stats/magic.png" class="mm_affinity-icon" />
+                      </div>
+                      <div class="flexcolumn">
+                        eval{@name} rolls his Empowered Magic and gets eval{'@result'}!
+                      </div>
+                    </div>
+                  </div>
+                </display>
+              </chat>
+            </click>
+          </div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input  mm_narrow" target="stats.magic" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+        <div class="mm_stat">
+          <label class="mm_stat-label">Brawn</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.brawn' />
+          <div class="mm_modified">eval{@brawn}</div>
+          <div class="mm_die-mstr" cond="eval{'@empower'!='1'}">
+            <img src="/content/icons/d.png">
+            <click>
+              <prompt align="right">
+                <b class="middle">Dice</b>
+                <userinput class="middle" varname="dice" value="" />
+              </prompt>
+              <chat roll='@dice + eval{@brawn}'>
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      eval{@name} rolls his Brawn and gets eval{'@result'}!
+                    </div>
+                  </div>
+                </display>
+              </chat>
+            </click>
+          </div>
+          <div class="mm_die-mstr" cond="eval{'@empower'=='1'}">
+            <img src="/content/icons/dp.png">
+            <click>
+              <prompt align="right">
+                <b class="middle">Dice</b>
+                <userinput class="middle" varname="dice" value="" />
+              </prompt>
+              <chat roll='@dice + eval{@grade}d6 + eval{@brawn}'>
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      eval{@name} rolls his Empowered Brawn and gets eval{'@result'}!
+                    </div>
+                  </div>
+                </display>
+              </chat>
+            </click>
+          </div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input mm_narrow" target="stats.brawn" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+      </div>
+      <div class="flexrow flexmiddle mm_brawn-row">
+        <div class="mm_stat">
+          <label class="mm_stat-label">Speed</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.speed' />
+          <div class="mm_modified">eval{@speed}</div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input mm_narrow" target="stats.speed" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+        <div class="mm_stat">
+          <label class="mm_stat-label">Protection</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.protection' />
+          <div class="mm_modified">eval{@protection}</div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input  mm_narrow" target="stats.protection" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+        <div class="mm_stat">
+          <label class="mm_stat-label">Discipline</label>
+          <input type="number" class='mm_input  mm_stat-value' target='stats.discipline' />
+          <div class="mm_modified">eval{@discipline}</div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input  mm_narrow" target="stats.discipline" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+        <div class="mm_stat">
+          <label class="mm_stat-label">Talent</label>
+          <input type="number" class='mm_input mm_stat-value' target='stats.talent' />
+          <div class="mm_modified">eval{@talent}</div>
+          <div class="mm_die-mstr" cond="eval{'@empower'!='1'}">
+            <img src="/content/icons/d.png">
+            <click>
+              <prompt align="right">
+                <b class="middle">Dice</b>
+                <userinput class="middle" varname="dice" value="" />
+              </prompt>
+              <chat roll='@dice + eval{@talent}'>
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      eval{@name} rolls his Talent and gets eval{'@result'}!
+                    </div>
+                  </div>
+                </display>
+              </chat>
+            </click>
+          </div>
+          <div class="mm_die-mstr" cond="eval{'@empower'=='1'}">
+            <img src="/content/icons/dp.png">
+            <click>
+              <prompt align="right">
+                <b class="middle">Dice</b>
+                <userinput class="middle" varname="dice" value="" />
+              </prompt>
+              <chat roll='@dice + eval{@grade}d6 + eval{@talent}'>
+                <save result="@total" />
+              </chat>
+              <chat>
+                <display>
+                  <div class="flexcolumn mm_chat_vs">
+                    <div class="flex flexrow mm_chat_title">
+                      eval{@name} rolls his Empowered Talent and gets eval{'@result'}!
+                    </div>
+                  </div>
+                </display>
+              </chat>
+          </div>
+          <div class="mm_bullet">
+            <click>
+              <popout width='auto' height='auto' title='Modifier' align='center'>
+                <div class="mm_pop_mod">
+                  <label class="">Mod</label>
+                  <input type="number" class="mm_input mm_narrow" target="stats.talent" mod="Rank">
+                </div>
+              </popout>
+            </click>
+          </div>
+        </div>
+      </div>
+      <div class="flexrow flexmiddle">
+        <div class="flexcolumn mm_affinities mm_elements">
+          <span title="Add an Affinity" class="mm_panel-title spadding" style="cursor:pointer;">Affinities
+                            <click>
+                                <create type='item' target="affinities" />
+                            </click>
+                        </span>
+          <div class="mm_stat mm_resistancebox" title="Affinity bonus">
+            <span class="mm_stat-value middle">eval{R@affinity}</span>
+            <div class="mm_modified">eval{@affinity}</div>
+            <div class="mm_bullet">
+              <click>
+                <popout width='auto' height='auto' title='Modifier' align='center'>
+                  <div class="mm_pop_mod">
+                    <label class="">Mod</label>
+                    <input type="number" class="mm_input mm_narrow" target="stats.affinity" mod="Rank">
+                  </div>
+                </popout>
+              </click>
+            </div>
+          </div>
+          <div>
+            <div class="mm_grid">
+            <list target='affinities' connect="inventorySort">
+              <div>
+                <img title="eval{@%path%.info.name}" class="hover2 mm_affinity-icon" src='/content/affinities/eval{@%path%.info.name}.png' />
+                <click>
+                  <prompt title="Confirmation">
+                    <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                    <delete target="affinities.%index%"></delete>
+                  </prompt>
+                </click>
+              </div>
+            </list>
+          </div>
+        </div>
+        </div>
+        <div class="flexcolumn mm_affinities mm_elements">
+          <span title="Add a Resistance" class="mm_panel-title spadding" style="cursor:pointer;">Resistances
+                            <click>
+                                <create type='item' target="resistances" />
+                            </click>
+                        </span>
+          <div class="mm_stat mm_resistancebox" title="Resistance Value">
+            <span class="mm_stat-value middle">eval{R@resistance}</span>
+            <div class="mm_modified">eval{@resistance}</div>
+            <div class="mm_bullet">
+              <click>
+                <popout width='auto' height='auto' title='Modifier' align='center'>
+                  <div class="mm_pop_mod">
+                    <label class="">Mod</label>
+                    <input type="number" class="mm_input mm_narrow" target="stats.resistance" mod="Rank">
+                  </div>
+                </popout>
+              </click>
+            </div>
+          </div>
+          <div>
+            <div class="mm_grid">
+            <list class="mm_grid" target='resistances' connect="inventorySort">
+              <div>
+                <img title="eval{@%path%.info.name}" class="hover2 mm_affinity-icon" src='/content/affinities/eval{@%path%.info.name}.png' />
+                <click>
+                  <prompt title="Confirmation">
+                    <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                    <delete target="resistances.%index%"></delete>
+                  </prompt>
+                </click>
+              </div>
+            </list>
+          </div>
+          </div>
+        </div>
+        <div class="flexcolumn mm_affinities mm_elements">
+          <div class="mm_panel-title spadding">
+            <span title="Add a Vulnerability" style="cursor:pointer;">Vulnerabilities</span>
+            <click>
+              <create type='item' target="vulnerabilities" />
+            </click>
+          </div>
+          <div>
+            <div class="mm_grid">
+            <list target='vulnerabilities' connect="inventorySort">
+              <div>
+                <img title="eval{@%path%.info.name}" class="hover2 mm_affinity-icon" src='/content/affinities/eval{@%path%.info.name}.png' />
+                <click>
+                  <prompt title="Confirmation">
+                    <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                    <delete target="vulnerabilities.%index%"></delete>
+                  </prompt>
+                </click>
+              </div>
+            </list>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flexcolumn mm_mmtabs" cond="@tab==2">
+      <div class="flex flexrow mm_talentlist" style="padding-bottom: 10px;">
+        <div class="flex flexcolumn padding">
+          <div class="mm_panel-title spadding">
+            <span class="">Traits</span>
+            <span class='mm_item-cmd mm_plus glyphicon glyphicon-plus'>
+                  <click>
+                      <create type='trait' target="traits" />
+                  </click>
+              </span>
+          </div>
+          <div class="flexcolumn flex mm_bold">
+            <list target='traits' connect="traitsSort">
+              <div class="flex flexcolumn">
+              <div class="flexrow mm_item">
+                <div class="flexcolumn mm_itemhead">
+                  <span class="mm_input" style="cursor:pointer;" cond="eval{'@%path%.info.display.current'=='visible'}">
+                              eval{'@%path%.info.name'}
+                              <click>
+                                  <setAttr target="traits.%index%.info.display.current" value="hidden" />
+                              </click>
+                          </span>
+                  <span class="mm_input" style="cursor:pointer;" cond="eval{'@%path%.info.display.current'!='visible'}">
+                              eval{'@%path%.info.name'}
+                              <click>
+                                  <setAttr target="traits.%index%.info.display.current" value="visible"/>
+                              </click>
+                      </span>
+                </div>
+                <div class="flex flexcolumn">
+                  <div class="flex flexrow">
+                    <div class="flexcolumn mm_item-cmd-icon">
+                      <span class='glyphicon glyphicon-edit link'>
+                                  <click>
+                                      <change target="traits.%index%"></change>
+                                  </click>
+                              </span>
+                    </div>
+                    <div class="flexcolumn mm_item-cmd-icon">
+                      <span class='glyphicon glyphicon-trash link destroy'>
+                              <click>
+                                  <prompt title="Confirmation">
+                                      <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                                      <delete target="traits.%index%"></delete>
+                                  </prompt>
+                              </click>
+                          </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flexrow" cond="eval{'@%path%.info.display.current'!='hidden'}">
+                <div class="flex flexcolumn mm_technique-description">
+                  traverse{traits.%index%.info.notes.current}
+                </div>
+              </div>
+            </div>
+            </list>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flexcolumn mm_mmtabs" cond="@tab==3">
+      <div class="flex flexrow mm_talentlist" style="padding-bottom: 10px;">
+        <div class="flex flexcolumn padding">
+          <div class="mm_panel-title spadding">
+            <span class="">Techniques</span>
+            <span class='mm_item-cmd mm_plus glyphicon glyphicon-plus'>
+                    <click>
+                        <create type='technique' target="techniques" />
+                    </click>
+                </span>
+          </div>
+          <div class="flexcolumn flex mm_bold">
+            <list target='techniques' connect="techniquesSort">
+              <div class="flex flexcolumn">
+              <div class="flexrow mm_item">
+                <div class="flexcolumn mm_itemhead">
+                  <span class="flexrow" style="cursor:pointer;display:inline;" cond="eval{'@%path%.info.display.current'=='visible'}">
+                    <img class="mm_affinity-icon" title="eval{'@%path%.info.element'}" src="/content/affinities/eval{'@%path%.info.element'}.png"/>
+                  <span class="mm_bottom-text">eval{'@%path%.info.name'}</span>
+                  <click>
+                    <setAttr target="techniques.%index%.info.display.current" value="hidden" />
+                  </click>
+                  </span>
+                  <span class="flexrow" style="cursor:pointer;display:inline;" cond="eval{'@%path%.info.display.current'!='visible'}">
+                                <img class="mm_affinity-icon" title="eval{'@%path%.info.element'}" src="/content/affinities/eval{'@%path%.info.element'}.png"/>
+                                <span class="mm_bottom-text">eval{'@%path%.info.name'}</span>
+                  <click>
+                    <setAttr target="techniques.%index%.info.display.current" value="visible" />
+                  </click>
+                  </span>
+                </div>
+                <div class="flex flexcolumn">
+                  <div class="flex flexrow">
+                    <div class="flexcolumn mm_item-cmd-icon">
+                      <span class='flex glyphicon glyphicon-edit link'>
+                                        <click>
+                                            <change target="techniques.%index%"></change>
+                                        </click>
+                                    </span>
+                    </div>
+                    <div class="flexcolumn mm_item-cmd-icon">
+                      <span class='flex glyphicon glyphicon-trash link destroy'>
+                                    <click>
+                                        <prompt title="Confirmation">
+                                            <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                                            <delete target="techniques.%index%"></delete>
+                                        </prompt>
+                                    </click>
+                                  </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex mm_wide" cond="eval{'@%path%.info.display.current'=='visible'}">
+                <div class="flex flexcolumn mm_technique-description mm_wide">
+                  <span>
+                    <i>eval{@%path%.info.action}</i>
+                  </span>
+                  <span cond="eval{'@empower'!='1' && '@%path%.info.attack'!='_'}"><b>Attack:</b> eval{@%path%.info.attack} vs eval{@%path%.info.defense}
+                    <div class="mm_die-mstr mm_technique-die">
+                      <img src="/content/icons/d6s.png">
+                      <click>
+                        <chat roll="2d6+@eval{@%path%.info.attack}">
+                          <pull targetdef="@eval{@%path%.info.defense}" targetname="@name" />
+                          <save targetdef="@targetdef" attack="@eval{@%path%.info.attack}" result="@total" targetname="@targetname"/>
+                        </chat>
+                        <chat>
+                        <display>
+                          <div class="flexcolumn mm_chat_vs">
+                          <div class="flexrow mm_chat_title" cond="eval{'@targetname' != '0'}">eval{@name} uses eval{@%path%.info.name} on eval{@targetname}!</div>
+                          <div class="flexrow mm_chat_title" cond="eval{'@targetname' == '0'}">eval{@name} uses eval{@%path%.info.name}!</div>
+                          <div class="flexrow flex middle" cond="eval{'@targetdef'!='0'}">
+                             <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.attack}.png"> eval{'@result'}</div>
+                             <div class="flexcolumn">vs</div>
+                             <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.defense}.png"> eval{'@targetdef'}</div>
+                          </div>
+                          <div class="flexrow flex middle mm_chat_vs" cond="eval{'@targetdef'=='0'}">
+                            <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.attack}.png"> eval{'@result'}</div>
+                            <div class="flexcolumn">vs</div>
+                            <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.defense}.png"> _</div>
+                          </div>
+                          <div class="flex middle" cond="eval{(@result-@attack)==2}">Critical Failure!</div>
+                          <div class="flex middle" cond="eval{(@result-@attack)>=11}">Critical Hit!</div>
+                          <div class="flex middle" cond="eval{(@result-@attack)==12}">Automatic Hit!</div>
+                        </div>
+                        </display>
+                      </chat>
+                    </click>
+                    </div>
+                  </span>
+                  <span cond="eval{'@empower'=='1' && '@%path%.info.attack'!='_'}"><b>Attack:</b> eval{@%path%.info.attack} vs eval{@%path%.info.defense}
+                    <div class="mm_die-mstr mm_technique-die">
+                      <img src="/content/icons/d8s.png">
+                      <click>
+                        <chat roll="2d8+@eval{@%path%.info.attack}">
+                          <pull targetdef="@eval{@%path%.info.defense}" targetname="@name" />
+                          <save targetdef="@targetdef" attack="@eval{@%path%.info.attack}" result="@total" targetname="@targetname"/>
+                        </chat>
+                        <chat>
+                        <display>
+                          <div class="flexcolumn mm_chat_vs">
+                          <div class="flexrow mm_chat_title" cond="eval{'@targetname' != '0'}">eval{@name} uses eval{@%path%.info.name} on eval{@targetname}!</div>
+                          <div class="flexrow mm_chat_title" cond="eval{'@targetname' == '0'}">eval{@name} uses eval{@%path%.info.name}!</div>
+                          <div class="flexrow flex middle" cond="eval{'@targetdef'!='0'}">
+                             <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.attack}.png"> eval{'@result'}</div>
+                             <div class="flexcolumn">vs</div>
+                             <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.defense}.png"> eval{'@targetdef'}</div>
+                          </div>
+                          <div class="flexrow flex middle mm_chat_vs" cond="eval{'@targetdef'=='0'}">
+                            <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.attack}.png"> eval{'@result'}</div>
+                            <div class="flexcolumn">vs</div>
+                            <div class="flex flexcolumn"><img class="mm_thumbnail" src="/content/stats/eval{@%path%.info.defense}.png"> _</div>
+                          </div>
+                          <div class="flex middle" cond="eval{(@result-@attack)==2}">Automatic Miss!</div>
+                          <div class="flex middle" cond="eval{(@result-@attack)>=11}">Critical Hit!</div>
+                          <div class="flex middle" cond="eval{(@result-@attack)==16}">Automatic Hit!</div>
+                        </div>
+                        </display>
+                      </chat>
+                    </click>
+                    </div>
+                  </span>
+                  <span cond="eval{'@%path%.info.damage_die'!='_'}"><b>Damage:</b> eval{@%path%.info.damage_number}deval{@%path%.info.damage_die} + eval{@%path%.info.damage_bonus}
+                      <div class="mm_die-mstr mm_technique-die">
+                      <img src="/content/icons/d.png" cond="eval{@empower==0}">
+                      <img src="/content/icons/dp.png" cond="eval{@empower==1}">
+                      <click>
+                        <chat roll="eval{@%path%.info.damage_number}deval{@%path%.info.damage_die}+@eval{@%path%.info.damage_bonus}" cond="eval{@empower==0}">
+                        <save result="@total" critical="eval{@%path%.info.damage_number}deval{@%path%.info.damage_die}"/>
+                        </chat>
+                            <chat roll="eval{@%path%.info.damage_number}deval{@%path%.info.damage_die}+@eval{@%path%.info.damage_bonus}+eval{@grade}d6" cond="eval{@empower==1}">
+                            <save result="@total" targetname="@targetname" critical="eval{@%path%.info.damage_number}deval{@%path%.info.damage_die}"/>
+                            <pull targetname="@name" />
+                          </chat>
+                        <chat>
+                          <display>
+                            <div class="flexcolumn mm_chat_vs">
+                              <div class="flex flexrow mm_chat_title" cond="eval{@empower==0}">
+                                <div class="flexcolumn">
+                                  <img src="/content/affinities/eval{@%path%.info.element}.png" class="mm_affinity-icon" />
+                                </div>
+                                <div class="flexcolumn">
+                                eval{@name} inflicts eval{'@result'} eval{'@%path%.info.element'} damage!
+                              </div>
+                              </div>
+                                <div class="flex flexrow mm_chat_title" cond="eval{@empower==1}">
+                                  <div class="flexcolumn">
+                                    <img src="/content/affinities/eval{@%path%.info.element}.png" class="mm_affinity-icon" />
+                                  </div>
+                                  <div class="flexcolumn">
+                                  eval{@name} inflicts eval{'@result'} eval{'@%path%.info.element'} empowered damage!
+                                </div>
+                              </div>
+                              <div class="flexrow" style="font-weight: normal;font-size:10px;">
+                                <span class="flex flexcolumn middle">Affinity eval{@affinity}</span>
+                  <span class="flex flexcolumn middle">Critical eval{@critical}</span>
+                </div>
+              </div>
+              </display>
+              </chat>
+              </click>
+          </div>
+          </span>
+          <span cond="eval{'@%path%.info.damage_die'=='_' && '@%path%.info.damage_bonus'!='_'}"><b>Damage:</b> eval{@%path%.info.damage_bonus}
+                  <div class="mm_die-mstr mm_technique-die">
+                  <img src="/content/icons/d.png">
+                  <click>
+                    <chat roll="@eval{@%path%.info.damage_bonus}">
+                      <save result="@total"/>
+                    </chat>
+                    <chat>
+                      <display>
+                        <div class="flexcolumn mm_chat_vs">
+                          <div class="flex flexrow mm_chat_title">
+                            <div class="flexcolumn">
+                              <img src="/content/affinities/eval{@%path%.info.element}.png" class="mm_affinity-icon" />
+                            </div>
+                            <div class="flexcolumn">
+                            eval{@name} inflicts eval{'@result'} eval{@%path%.info.element} damage!
+                          </div>
+                          </div>
+                          <div class="flexrow" style="font-weight: normal;font-size:10px;">
+                            (Affinity bonus: eval{@affinity})
+                          </div>
+                        </div>
+                      </display>
+                    </chat>
+                  </click>
+                </div>
+              </span>
+          <span cond="eval{'@%path%.info.trigger_threshold'!='_'}"><b>Trigger:</b> (eval{@%path%.info.trigger_threshold}) eval{@%path%.info.trigger_condition}
+                    <div class="mm_die-mstr mm_technique-die">
+                      <img src="/content/icons/d6.png">
+                      <click>
+                          <chat roll="1d6">
+                            <save result="@total"/>
+                          </chat>
+                          <chat>
+                            <display>
+                              <div class="flexcolumn mm_chat_vs">
+                                <div class="flex flexrow mm_chat_title" cond="eval{'@result>=@%path%.info.trigger_threshold'}">
+                                  eval{@name} inflicts eval{@%path%.info.trigger_condition}!
+                                </div>
+                                <div class="flex flexrow mm_chat_title" cond="eval{@result<@%path%.info.trigger_threshold}">
+                                  Nothing happens!
+                                </div>
+                              </div>
+                            </display>
+                          </chat>
+                      </click>
+                    </div>
+                  </span>
+          <span cond="eval{@%path%.info.target}"><b>Target:</b> eval{@%path%.info.target}</span> traverse{techniques.%index%.info.notes.current}
+          <span><i>eval{@%path%.info.element}</i> • <i cond="eval{@%path%.info.reach}">eval{@%path%.info.reach}</i> • <i cond="eval{@%path%.info.descriptor}">eval{@%path%.info.descriptor}</i></span>
+        </div>
+      </div>
+    </div>
+      </list>
+    </div>
+  </div>
+</div>
+</div>
+</div>

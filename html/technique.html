@@ -1,0 +1,147 @@
+<div class='flex flexcolumn mm_technique-sheet'>
+    <div class='flexrow flexmiddle'>
+        <div class='flexcolumn smargin mm_element-logo_small'>
+            <img src="/content/affinities/eval{@element}.png" class="mm_logo">
+        </div>
+        <div class="flex spadding">
+            <input class='middle mm_maxwidth flex mm_name-tech' target='info.name'/>
+        </div>
+        <div class="padding">
+        </div>
+        <select class="mm_select mm_tier mm_eval{@lockcmd}" target='info.tier'>
+            <option>T1</option>
+            <option>T2</option>
+            <option>T3</option>
+            <option>T4</option>
+            <option>T5</option>
+        </select>
+    </div>
+    <div class='flexrow margin'>
+        <div class="flexcolumn smargin mm_effect-box" style="display:inline;">
+            <span class="mm_attack_label">Attack</span>
+            <select class="mm_select mm_attack mm_eval{@lockcmd}" target='info.attack'>
+                <option>_</option>
+                <option>Strike</option>
+                <option>Magic</option>
+            </select> vs
+            <select class="mm_select mm_attack mm_eval{@lockcmd}" target='info.defense'>
+                <option>_</option>
+                <option>Protection</option>
+                <option>Discipline</option>
+            </select>
+        </div>
+        <div class="flexcolumn smargin mm_effect-box" style="display:inline;">
+            <span class="mm_attack_label">Damage</span>
+            <select class="mm_select" target='info.damage_number'>
+                <option>_</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <span>d</span>
+            <select class="mm_select mm_eval{@lockcmd}" target='info.damage_die'>
+                <option>_</option>
+                <option>6</option>
+                <option>8</option>
+                <option>10</option>
+                <option>12</option>
+            </select>
+            +
+            <select class="mm_select mm_eval{@lockcmd}" target='info.damage_bonus'>
+                <option>_</option>
+                <option>Brawn</option>
+                <option>Talent</option>
+            </select>
+            </select>
+        </div>
+        <div class="flexcolumn smargin mm_effect-box" style="display:inline;">
+            <span class="mm_attack_label">Trigger</span>
+            <select class="mm_select mm_eval{@lockcmd}" target='info.trigger_threshold'>
+                <option>_</option>
+                <option value="2">(2)</option>
+                <option value="3">(3)</option>
+                <option value="4">(4)</option>
+                <option value="5">(5)</option>
+                <option value="6">(6)</option>
+            </select>
+            <select class="mm_select mm_eval{@lockcmd}" target='info.trigger_condition'>
+                <option>_</option>
+                <option>Bleeding</option>
+                <option>Blinded</option>
+                <option>Burning</option>
+                <option>Confused</option>
+                <option>Debilitated</option>
+                <option>Disoriented</option>
+                <option>Frightened</option>
+                <option>Frozen</option>
+                <option>Grabbed</option>
+                <option>Grounded</option>
+                <option>Outnumbered</option>
+                <option>Poisoned</option>
+                <option>Prone</option>
+                <option>Sealed</option>
+                <option>Sleeping</option>
+            </select>
+        </div>
+    </div>
+    <div class="flexrow">
+        <div class="mm_target">
+            <input placeholder="Target" class='line lrmargin' target='info.target'/>
+        </div>
+    </div>
+    <div class="flex flexrow">
+        <ui name="ui_rawNotesv2"/>
+    </div>
+    <div class="flexrow smargin" style="border-top: 1px solid rgba(4,108,101,0.8)">
+        <div class="flex flexmiddle">
+            <select class="mm_select mm_descriptor spadding mm_eval{@lockcmd}" target='info.element'>
+                <option>Basic</option>
+                <option>Earth</option>
+                <option>Fire</option>
+                <option>Fury</option>
+                <option>Ice</option>
+                <option>Lightning</option>
+                <option>Mystic</option>
+                <option>Verdant</option>
+                <option>Water</option>
+                <option>Wind</option>
+            </select>
+            <div> •</div>
+            <select class="mm_select mm_descriptor spadding mm_eval{@lockcmd}" target='info.reach'>
+                <option>_</option>
+                <option>Melee</option>
+                <option>Ranged</option>
+                <option>Zone</option>
+                <option>Aura</option>
+                <option>Area</option>
+                <option>Area-sphere</option>
+                <option>Area-line</option>
+                <option>Area-cone</option>
+                <option>Area-wall</option>
+            </select>
+            <div> •</div>
+            <select class="mm_select mm_descriptor spadding mm_eval{@lockcmd}" target='info.descriptor'>
+                <option>_</option>
+                <option>Bite</option>
+                <option>Breath weapon</option>
+                <option>Claw</option>
+                <option>Gaze</option>
+                <option>Grit</option>
+                <option>Healing</option>
+                <option>Horn</option>
+                <option>Recoil</option>
+                <option>Tail</option>
+                <option>Wing</option>
+            </select>
+        </div>
+        <div class="flex flexmiddle">
+            <select class="mm_select mm_action mm_eval{@lockcmd}" target='info.action'>
+                <option>No action</option>
+                <option>Combat action</option>
+                <option>Utility action</option>
+                <option>Response</option>
+                <option>Movement</option>
+            </select>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,602 @@
+<div class='flex flexcolumn mm_binder-sheet'>
+    <div class="flexrow">
+        <div class="flexcolumn">
+            <div class="flexrow mm_portrait" style="position:relative;">
+                <ui name='ui_image'/>
+                <ui name="ui_token" style="position:absolute;width:80px;height:80px;top:190px;left:174px;"/>
+            </div>
+            <div class="flexrow mm_tabs">
+                <div class="flexcolumn mm_tab">
+                    Abilities
+                    <click>
+                        <setAttr target='info.tab' value='0'>
+                    </click>
+                </div>
+                <div class="flexcolumn mm_tab">
+                    Inventory
+                    <click>
+                        <setAttr target='info.tab' value='1'>
+                    </click>
+                </div>
+                <div class="flexcolumn mm_tab">
+                    Notes
+                    <click>
+                        <setAttr target='info.tab' value='2'>
+                    </click>
+                </div>
+            </div>
+        </div>
+        <div class="flex flexcolumn">
+            <div class="flexrow padding">
+                <div class="flexcolumn">
+                    <div class="mm_brawn">
+                        <label class="mm_stat-label">Authority</label>
+                        <input type="number" class='mm_input mm_stat-value' target='stats.authority'/>
+                    </div>
+                </div>
+                <div class="flex flexcolumn mm_underline">
+                    <div class="flexrow mm_class">
+                        <input class='mm_input mm_wide mm_binder-name' target='info.name'/>
+                    </div>
+                    <div class="flexrow mm_class">
+                        <input class='mm_input mm_thin mm_bold' target='info.class' placeholder="Binder class"/>
+                        <div> -</div>
+                        <input class='mm_input mm_thin' target='info.archetype' placeholder="Archetype"/>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flexrow spadding">
+                <div class="mm_counter-bind-stat">
+                    <label class="mm_stat-label">Hit points</label>
+                    <input type="number" class='mm_input  mm_stat-value' target='stats.hp'/> /
+                    <input type="number" class='mm_input  mm_stat-value' target='stats.hpmax'/>
+                </div>
+                <div class="mm_counter-bind-stat mm_background">
+                    <label class="mm_stat-label">Background</label>
+                    <input class='mm_input' target='info.background'/>
+                </div>
+            </div>
+            <div class="flexrow" style="margin: auto;">
+                <div class="flexcolumn mm_skillgroup">
+                    <div class="flexrow mm_attribute">
+                        <div class="flex flexcolumn">
+                            <span class="mm_attribute-label">Interaction</span>
+                        </div>
+                        <div class="flexcolumn">
+                            <input type="number" class='mm_input mm_attribute-value' target='stats.interaction'/>
+                        </div>
+                    </div>
+                    <list target="skills"
+                          ignore="education, intuition, proficiency, survival, athletics, fortitude, strength, willpower">
+                        <div class="flexrow mm_skill">
+                            <div class="flexcolumn">
+                                <span class="mm_skill-label"
+                                      cond="eval{'@%path%.name' != '0'}">eval{'@%path%.name'}</span>
+                                <span class="mm_skill-label" cond="eval{'@%path%.name' == '0'}">%index%</span>
+                            </div>
+                            <div class="flexcolumn">
+                                <input type="number" class='mm_input mm_skill-value' target='skills.%index%'/>
+                            </div>
+                            <div class="flexcolumn mm_roll">
+                                <div>
+                                    <img src="/content/icons/d4s.png" class="mm_die" cond="@%path%<5">
+                                    <img src="/content/icons/d6s.png" class="mm_die" cond="@%path%<8 && @%path%>4">
+                                    <img src="/content/icons/d8s.png" class="mm_die" cond="@%path%>7">
+                                    <click cond="@%path%<8">
+                                        <chat cond="eval{@%path%<=4}" roll="2d4" roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat cond="eval{@%path%>4 && @skills.%path%<7}" roll="2d6"
+                                              roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat>
+                                            <display>
+                                                <div class="flexcolumn mm_chat_vs">
+                                                    <div class="flex flexrow mm_chat_title">
+                                                        Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                                    </div>
+                                                </div>
+                                            </display>
+                                        </chat>
+                                    </click>
+                                    <click cond="@%path%>=8 ">
+                                        <chat roll="2d8" roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat>
+                                            <display>
+                                                <div class="flexcolumn mm_chat_vs">
+                                                    <div class="flex flexrow mm_chat_title">
+                                                        Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                                    </div>
+                                                </div>
+                                            </display>
+                                        </chat>
+                                    </click>
+                                </div>
+                            </div>
+                        </div>
+                    </list>
+                </div>
+                <div class="flexcolumn mm_skillgroup">
+                    <div class="flexrow mm_attribute">
+                        <div class="flex flexcolumn">
+                            <span class="mm_attribute-label">Knowledge</span>
+                        </div>
+                        <div class="flexcolumn">
+                            <input type="number" class='mm_input mm_attribute-value' target='stats.knowledge'/>
+                        </div>
+                    </div>
+                    <list target="skills"
+                          ignore="guile, perception, persuasion, wits, athletics, fortitude, strength, willpower">
+                        <div class="flexrow mm_skill">
+                            <div class="flexcolumn">
+                                <span class="mm_skill-label"
+                                      cond="eval{'@%path%.name' != '0'}">eval{'@%path%.name'}</span>
+                                <span class="mm_skill-label" cond="eval{'@%path%.name' == '0'}">%index%</span>
+                            </div>
+                            <div class="flexcolumn">
+                                <input type="number" class='mm_input mm_skill-value' target='skills.%index%'/>
+                            </div>
+                            <div class="flexcolumn mm_roll">
+                                <div>
+                                    <img src="/content/icons/d4s.png" class="mm_die" cond="@%path%<5">
+                                    <img src="/content/icons/d6s.png" class="mm_die" cond="@%path%<8 && @%path%>4">
+                                    <img src="/content/icons/d8s.png" class="mm_die" cond="@%path%>7">
+                                    <click cond="@%path%<8">
+                                        <chat cond="eval{@%path%<=4}" roll="2d4" roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat cond="eval{@%path%>4 && @skills.%path%<7}" roll="2d6"
+                                              roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat>
+                                            <display>
+                                                <div class="flexcolumn mm_chat_vs">
+                                                    <div class="flex flexrow mm_chat_title">
+                                                        Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                                    </div>
+                                                </div>
+                                            </display>
+                                        </chat>
+                                    </click>
+                                    <click cond="@%path%>=8 ">
+                                        <chat roll="2d8" roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat>
+                                            <display>
+                                                <div class="flexcolumn mm_chat_vs">
+                                                    <div class="flex flexrow mm_chat_title">
+                                                        Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                                    </div>
+                                                </div>
+                                            </display>
+                                        </chat>
+                                    </click>
+                                </div>
+                            </div>
+                        </div>
+                    </list>
+                </div>
+                <div class="flexcolumn mm_skillgroup">
+                    <div class="flexrow mm_attribute">
+                        <div class="flex flexcolumn">
+                            <span class="mm_attribute-label">Vigor</span>
+                        </div>
+                        <div class="flexcolumn">
+                            <input type="number" class='mm_input mm_attribute-value' target='stats.vigor'/>
+                        </div>
+                    </div>
+                    <list target="skills"
+                          ignore="guile, perception, persuasion, wits, education, intuition, proficiency, survival">
+                        <div class="flexrow mm_skill">
+                            <div class="flexcolumn">
+                                <span class="mm_skill-label"
+                                      cond="eval{'@%path%.name' != '0'}">eval{'@%path%.name'}</span>
+                                <span class="mm_skill-label" cond="eval{'@%path%.name' == '0'}">%index%</span>
+                            </div>
+                            <div class="flexcolumn">
+                                <input type="number" class='mm_input mm_skill-value' target='skills.%index%'/>
+                            </div>
+                            <div class="flexcolumn mm_roll">
+                                <div>
+                                    <img src="/content/icons/d4s.png" class="mm_die" cond="@%path%<5">
+                                    <img src="/content/icons/d6s.png" class="mm_die" cond="@%path%<8 && @%path%>4">
+                                    <img src="/content/icons/d8s.png" class="mm_die" cond="@%path%>7">
+                                    <click cond="@%path%<8">
+                                        <chat cond="eval{@%path%<=4}" roll="2d4" roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat cond="eval{@%path%>4 && @skills.%path%<7}" roll="2d6"
+                                              roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat>
+                                            <display>
+                                                <div class="flexcolumn mm_chat_vs">
+                                                    <div class="flex flexrow mm_chat_title">
+                                                        Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                                    </div>
+                                                </div>
+                                            </display>
+                                        </chat>
+                                    </click>
+                                    <click cond="@%path%>=8 ">
+                                        <chat roll="2d8" roll-ui="ui_skillroll">
+                                            <save result='@total'/>
+                                        </chat>
+                                        <chat>
+                                            <display>
+                                                <div class="flexcolumn mm_chat_vs">
+                                                    <div class="flex flexrow mm_chat_title">
+                                                        Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                                    </div>
+                                                </div>
+                                            </display>
+                                        </chat>
+                                    </click>
+                                </div>
+                            </div>
+                        </div>
+                    </list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flexrow mm_part2" cond="@tab==0">
+        <div class="flex flexcolumn mm_inventory mm_talents">
+            <div class="mm_panel-title spadding">
+                <span>Class features and Merits</span>
+                <span class='mm_item-cmd mm_plus glyphicon glyphicon-plus'>
+                    <click>
+                        <create type='feature' target="features"/>
+                    </click>
+                </span>
+            </div>
+            <div class="flexcolumn">
+                <list target='features' connect="featuresSort">
+                    <div class="flex flexcolumn">
+                        <div class="flexrow mm_item">
+                            <div class="flexcolumn mm_nopadding flex">
+              <span class="mm_input mm_item-name" style="cursor:pointer;"
+                    cond="eval{'@%path%.info.display.current'=='visible'}">
+                                eval{'@%path%.info.name'}
+                                <click>
+                                    <setAttr target="features.%index%.info.display.current" value="hidden"/>
+                                </click>
+                            </span>
+                                <span class="mm_input mm_item-name" style="cursor:pointer;"
+                                      cond="eval{'@%path%.info.display.current'!='visible'}">
+                                eval{'@%path%.info.name'}
+                                <click>
+                                    <setAttr target="features.%index%.info.display.current" value="visible"/>
+                                </click>
+                            </span>
+                            </div>
+                            <div class="flexcolumn">
+                                <div class="flex flexrow">
+                                    <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-edit link'>
+                                        <click>
+                                            <change target="features.%index%"></change>
+                                        </click>
+                                    </span>
+                                    </div>
+                                    <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-trash link destroy'>
+                                    <click>
+                                        <prompt title="Confirmation">
+                                            <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                                            <delete target="features.%index%"></delete>
+                                        </prompt>
+                                    </click>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flexrow" cond="eval{'@%path%.info.display.current'=='visible'}">
+                            <div class="flex flexcolumn mm_talent-description">
+                                traverse{features.%index%.info.notes.current}
+                            </div>
+                        </div>
+                    </div>
+                </list>
+            </div>
+        </div>
+        <div class="flex flexcolumn mm_inventory">
+            <div class="mm_panel-title spadding">
+                <span>Bound MajiMonsters and Drajules</span>
+                <span class='mm_item-cmd mm_plus glyphicon glyphicon-plus'>
+                    <click>
+                        <create type='drajule' target="drajules"/>
+                    </click>
+                </span>
+            </div>
+            <div class="flexcolumn flex mm_bold">
+                <list target='drajules' connect="drajuleSort">
+                    <div class="flexcolumn">
+                        <div class="flexrow mm_item">
+                            <div class="flexcolumn mm_nopadding flex">
+              <span class="flexrow mm_item-name" style="cursor:pointer;display:inline;"
+                    cond="eval{'@%path%.info.display.current'=='visible'}">
+              <span cond="eval{'@%path%.info.active'=='inactive'}" class="mm_nodeco">
+                <img class="mm_affinity-icon mm_eval{'@%path%.info.active'}" src="eval{'@%path%.info.img.current'}"/>
+                <click>
+                    <setAttr target="drajules.%index%.info.active" value="active"/>
+                  </click>
+              </span>
+              <span cond="eval{'@%path%.info.active'=='active'}" class="mm_nodeco">
+                    <img class="mm_affinity-icon mm_eval{'@%path%.info.active'}"
+                         src="eval{'@%path%.info.img.current'}"/>
+                    <click>
+                      <setAttr target="drajules.%index%.info.active" value="summoned"/>
+                    </click>
+                  </span>
+              <span cond="eval{'@%path%.info.active'=='summoned'}" class="mm_nodeco">
+                    <img class="mm_affinity-icon mm_eval{'@%path%.info.active'}"
+                         src="eval{'@%path%.info.img.current'}"/>
+                    <click>
+                        <setAttr target="drajules.%index%.info.active" value="inactive"/>
+                      </click>
+                  </span>
+              <span class="mm_bottom-text">eval{'@%path%.info.name'}</span>
+              <click>
+                <setAttr target="drajules.%index%.info.display.current" value="hidden"/>
+              </click>
+              </span>
+                                <span class="flexrow mm_item-name" style="cursor:pointer;display:inline;"
+                                      cond="eval{'@%path%.info.display.current'!='visible'}">
+              <span cond="eval{'@%path%.info.active'=='inactive'}" class="mm_nodeco">
+                <img class="mm_affinity-icon mm_eval{'@%path%.info.active'}" src="eval{'@%path%.info.img.current'}"/>
+                <click>
+                    <setAttr target="drajules.%index%.info.active" value="active"/>
+                  </click>
+              </span>
+              <span cond="eval{'@%path%.info.active'=='active'}" class="mm_nodeco">
+                    <img class="mm_affinity-icon mm_eval{'@%path%.info.active'}"
+                         src="eval{'@%path%.info.img.current'}"/>
+                    <click>
+                      <setAttr target="drajules.%index%.info.active" value="summoned"/>
+                    </click>
+                  </span>
+              <span cond="eval{'@%path%.info.active'=='summoned'}" class="mm_nodeco">
+                    <img class="mm_affinity-icon mm_eval{'@%path%.info.active'}"
+                         src="eval{'@%path%.info.img.current'}"/>
+                    <click>
+                        <setAttr target="drajules.%index%.info.active" value="inactive"/>
+                      </click>
+                  </span>
+              <span class="mm_bottom-text">eval{'@%path%.info.name'}</span>
+              <click>
+                <setAttr target="drajules.%index%.info.display.current" value="visible"/>
+              </click>
+
+              </span>
+                            </div>
+                            <div class="flexcolumn">
+                                <div class="flex flexrow">
+                                    <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-edit link'>
+                                        <click>
+                                            <change target="drajules.%index%"></change>
+                                        </click>
+                                    </span>
+                                    </div>
+                                    <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-trash link destroy'>
+                                    <click>
+                                        <prompt title="Confirmation">
+                                            <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                                            <delete target="drajules.%index%"></delete>
+                                        </prompt>
+                                    </click>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flexrow" cond="eval{'@%path%.info.display.current'=='visible'}">
+                            <div class="flex flexcolumn mm_talent-description">
+                                <ui name="mm_ProcessedNote" scope-drajule="%index%"/>
+                            </div>
+                        </div>
+                    </div>
+                </list>
+            </div>
+        </div>
+    </div>
+    <div class="flex flexrow mm_part2" cond="@tab==1">
+        <div class="flex flexcolumn mm_inventory">
+            <div class="mm_panel-title spadding">
+                <span class="">Inventory</span>
+                <span class='mm_item-cmd mm_plus glyphicon glyphicon-plus'>
+                    <click>
+                        <create type='item' target="inventory"/>
+                    </click>
+                </span>
+            </div>
+            <div class="mm_inventory-items">
+                <div class="flex flexrow mm_item-head mm_underline">
+                    <div class="flexcolumn mm_item-qty">
+                        <span class="mm_item-qty">#</span>
+                    </div>
+                    <div class="flex flexcolumn">
+                        <span class="mm_item-name">Name</span>
+                    </div>
+                    <div class="flexcolumn mm_item-weight">
+                        <span class="mm_item-weight">Wt.</span>
+                    </div>
+                    <div class="flexcolumn mm_item-cmd">
+                    </div>
+                </div>
+                <list target='inventory' connect="inventorySort">
+                    <div class="flexrow mm_item">
+                        <div class="flexcolumn mm_nopadding">
+                            <input type="number" class="mm_input mm_item-qty"
+                                   target='eval{inventory.%index%.info.qty}'/>
+                        </div>
+                        <div class="flexcolumn mm_nopadding flex">
+                            <input class="mm_input" target='eval{inventory.%index%.info.name}'/>
+                        </div>
+                        <div class="flexcolumn mm_nopadding">
+                            <input type="number" class="mm_input mm_item-weight"
+                                   target='eval{inventory.%index%.info.weight}'/>
+                        </div>
+                        <div class="flexcolumn">
+                            <div class="flex flexrow">
+                                <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-edit link'>
+                                        <click>
+                                            <change target="inventory.%index%"></change>
+                                        </click>
+                                    </span>
+                                </div>
+                                <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-trash link destroy'>
+                                        <click>
+                                            <prompt title="Confirmation">
+                                                <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                                                <delete target="inventory.%index%"></delete>
+                                            </prompt>
+                                        </click>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </list>
+            </div>
+        </div>
+        <div class="flex flexcolumn">
+            <div class="flexrow">
+                <div class="flex flexcolumn">
+                    <div class="flex flexrow mm_currency-group">
+                        <div class="flexcolumn flex flexmiddle">
+                            <div class="mm_currency">
+                                <span class="mm_currency-label">Imperials</span>
+                                <input type="number" class='mm_input mm_currency-value' target='info.imperials'/>
+                            </div>
+                        </div>
+                        <div class="flexcolumn flex flexmiddle">
+                            <div class="mm_currency">
+                                <span class="mm_currency-label">Suls</span>
+                                <input type="number" class='mm_input mm_currency-value' target='info.suls'/>
+                            </div>
+                        </div>
+                        <div class="flexcolumn flex flexmiddle">
+                            <div class="mm_currency">
+                                <span class="mm_currency-label">Eyes</span>
+                                <input type="number" class='mm_input mm_currency-value' target='info.eyes'/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flexrow">
+                <div class="flex flexcolumn mm_inventory">
+                    <div class="mm_panel-title spadding">
+                        <span>Counters</span>
+                        <span class='mm_item-cmd mm_plus glyphicon glyphicon-plus'>
+                        <click>
+                          <create type='item' target="custom_counters"/>
+                        </click>
+                    </span>
+                    </div>
+                    <div>
+                        <list class="" target='custom_counters'>
+                            <div class="flexcolumn">
+                                <div class="flex flexrow mm_item">
+                                    <div class="flexcolumn mm_nopadding flex">
+                                        <span class="mm_bold">eval{@%path%.info.name}</span>
+                                    </div>
+                                    <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-edit link'>
+                                          <click>
+                                            <popout title="Custom Counter Settings" width="auto" height="auto">
+                                              <div class="middle">
+                                                <b>Counter Name</b>
+                                              </div>
+                                              <div>
+                                                <input class="mm_input mm_bold"
+                                                       target='eval{custom_counters.%index%.info.name}'/>
+                                              </div>
+                                              <div class="middle">
+                                                <b>Maximum value</b>
+                                              </div>
+                                              <div>
+                                                <input type="number" class="mm_input middle"
+                                                       target="custom_counters.%index%.max"/>
+                                              </div>
+                                                <div class="middle">
+                                                  <b>Icon</b>
+                                                </div>
+                                                <div style="margin: auto;">
+                                                  <select class="mm_select" target="custom_counters.%index%.icon">
+                                                    <option></option>
+                                                    <option value="basic">Basic</option>
+                                                    <option value="earth">Earth</option>
+                                                    <option value="fire">Fire</option>
+                                                    <option value="fury">Fury</option>
+                                                    <option value="ice">Ice</option>
+                                                    <option value="mystic">Mystic</option>
+                                                    <option value="verdant">Verdant</option>
+                                                    <option value="water">Water</option>
+                                                    <option value="wind">Wind</option>
+                                                    <option value="bind">Bind</option>
+                                                    <option value="trick">Trick</option>
+                                                </select>
+                                                </div>
+                                            </popout>
+                                          </click>
+                                      </span>
+                                    </div>
+                                    <div class="flexcolumn mm_item-cmd-icon">
+                  <span class='glyphicon glyphicon-trash link destroy'>
+                                          <click>
+                                              <prompt title="Confirmation">
+                                                  <div class="margin padding">Do you want to delete <b>eval{@%path%.info.name}</b>?</div>
+                                                  <delete target="custom_counters.%index%"></delete>
+                                              </prompt>
+                                          </click>
+                                      </span>
+                                    </div>
+                                </div>
+                                <div class="flexrow">
+                <span class='glyphicon glyphicon-minus smargin' style="cursor:pointer;">
+                    <click>
+                      <setAttr target="custom_counters.%index%.current" value="eval{@%path%.current - 1}"/>
+                    </click>
+                  </span>
+                                    <div class="flexcolumn mm_custom_counter"
+                                         style="width: eval{22*@%path%.current}px;background-image: url(/content/icons/eval{@%path%.icon}_counter.png);">
+                                    </div>
+                                    <div class="flexcolumn mm_custom_counter mm_custom_counter_unactive"
+                                         style="width: eval{22*(@%path%.max - @%path%.current)}px;background-image: url(/content/icons/eval{@%path%.icon}_counter.png);">
+                                    </div>
+                                    <span class='glyphicon glyphicon-plus smargin' style="cursor:pointer;">
+                      <click>
+                        <setAttr target="custom_counters.%index%.current" value="eval{@%path%.current + 1}"/>
+                      </click>
+                    </span>
+                                </div>
+                            </div>
+                        </list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flexrow mm_part2" cond="@tab==2">
+        <div class="flex flexcolumn mm_inventory">
+            <div class="mm_panel-title spadding">
+                Notes
+            </div>
+            <ui name="ui_rawNotesv2"/>
+        </div>
+    </div>
+</div>
+</div>

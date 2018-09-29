@@ -1,0 +1,143 @@
+<div class="hb_panel flexcolumn">
+    <div class="flexrow"
+         style="background:grey;height:5px;border-radius:5px;border:1px solid grey;box-shadow: 0px 0px 2px black inset;">
+        <div style="background:red;border-top-left-radius:5px;border-bottom-left-radius:5px;width:eval{100*('@hp'/'@hpmax')}%;box-shadow: 0px 0px 2px black inset;"></div>
+    </div>
+    <div class="flexrow">
+        <select target="info.hb_active" class="mm_select hb_btn hb_select">
+            <option value="interaction">Interaction</option>
+            <option value="knowledge">Knowledge</option>
+            <option value="vigor">Vigor</option>
+        </select>
+    </div>
+    <div class="flexrow" cond="eval{'@hb_active'=='interaction'}">
+        <list class="flexcolumn hb_2grid" target="skills"
+              ignore="education, intuition, proficiency, survival, athletics, fortitude, strength, willpower">
+            <div class="hb_btn hb_half">
+                <span cond="eval{'@%path%.short' != '0'}">eval{'@%path%.short'}</span>
+                <span cond="eval{'@%path%.short' == '0'}">%index%</span>
+                <click cond="@%path%<8">
+                    <chat cond="eval{@%path%<=4}" roll="2d4" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat cond="eval{@%path%>4 && @skills.%path%<7}" roll="2d6" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat>
+                        <display>
+                            <div class="flexcolumn mm_chat_vs">
+                                <div class="flex flexrow mm_chat_title">
+                                    Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                </div>
+                            </div>
+                        </display>
+                    </chat>
+                </click>
+                <click cond="@%path%>=8 ">
+                    <chat roll="2d8" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat>
+                        <display>
+                            <div class="flexcolumn mm_chat_vs">
+                                <div class="flex flexrow mm_chat_title">
+                                    Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                </div>
+                            </div>
+                        </display>
+                    </chat>
+                </click>
+            </div>
+        </list>
+    </div>
+    <div class="flexrow" cond="eval{'@hb_active'=='knowledge'}">
+        <list class="flexcolumn hb_2grid" target="skills"
+              ignore="guile, perception, persuasion, wits, athletics, fortitude, strength, willpower">
+            <div class="hb_btn hb_half">
+                <span cond="eval{'@%path%.short' != '0'}">eval{'@%path%.short'}</span>
+                <span cond="eval{'@%path%.short' == '0'}">%index%</span>
+                <click cond="@%path%<8">
+                    <chat cond="eval{@%path%<=4}" roll="2d4" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat cond="eval{@%path%>4 && @skills.%path%<7}" roll="2d6" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat>
+                        <display>
+                            <div class="flexcolumn mm_chat_vs">
+                                <div class="flex flexrow mm_chat_title">
+                                    Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                </div>
+                            </div>
+                        </display>
+                    </chat>
+                </click>
+                <click cond="@%path%>=8 ">
+                    <chat roll="2d8" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat>
+                        <display>
+                            <div class="flexcolumn mm_chat_vs">
+                                <div class="flex flexrow mm_chat_title">
+                                    Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                </div>
+                            </div>
+                        </display>
+                    </chat>
+                </click>
+            </div>
+        </list>
+    </div>
+    <div class="flexrow" cond="eval{'@hb_active'=='vigor'}">
+        <list class="flexcolumn hb_2grid" target="skills"
+              ignore=" guile, perception, persuasion, wits, education, intuition, proficiency, survival">
+            <div class="hb_btn hb_half">
+                <span cond="eval{'@%path%.short' != '0'}">eval{'@%path%.short'}</span>
+                <span cond="eval{'@%path%.short' == '0'}">%index%</span>
+                <click cond="@%path%<8">
+                    <chat cond="eval{@%path%<=4}" roll="2d4" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat cond="eval{@%path%>4 && @skills.%path%<7}" roll="2d6" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat>
+                        <display>
+                            <div class="flexcolumn mm_chat_vs">
+                                <div class="flex flexrow mm_chat_title">
+                                    Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                </div>
+                            </div>
+                        </display>
+                    </chat>
+                </click>
+                <click cond="@%path%>=8 ">
+                    <chat roll="2d8" roll-ui="ui_skillroll">
+                        <save result='@total'/>
+                    </chat>
+                    <chat>
+                        <display>
+                            <div class="flexcolumn mm_chat_vs">
+                                <div class="flex flexrow mm_chat_title">
+                                    Eval{@name} rolls a %index% check and gets eval{'@result'}!
+                                </div>
+                            </div>
+                        </display>
+                    </chat>
+                </click>
+            </div>
+        </list>
+    </div>
+    <list target="drajules">
+        <div class="flexrow mm_drajuledisplay" cond="eval{'@%path%.info.active'=='summoned'}">
+            <div class="flexcolumn">
+                <img src="/content/icons/drajule1.png" style="width:24px;height:24px;">
+            </div>
+            <div class="flex flexcolumn">
+                eval{'@%path%.info.name'}
+            </div>
+        </div>
+    </list>
+</div>

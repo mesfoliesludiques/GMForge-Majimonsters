@@ -1,0 +1,246 @@
+.mm_item-sheet {
+    border: 1px solid #29333C;
+    background-image: url("/content/back.jpg");
+    font-family: Shruti;
+}
+
+.mm_name {
+    color: #046C65;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mm_item-prop {
+    width: 70px !important;
+}
+
+.mm_wide {
+    width: 95%;
+}
+
+.mm_description {
+    padding: 8px;
+    text-align: left;
+    font-size: 16px
+}
+
+.mm_activation {
+    font-size: 30px;
+    font-weight: bold;
+    color: #046C65;
+    font-family: Feast;
+}
+
+.mm_feature-sheet {
+    border: 1px solid #29333C;
+    background-image: url("/content/back.jpg");
+    font-family: Shruti;
+}
+
+.mm_name {
+    color: #046C65;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mm_wide {
+    width: 95%;
+}
+
+.mm_description {
+    font-size: 16px;
+    text-align: left;
+    padding: 8px;
+}
+
+.mm_inactive {
+    filter: saturate(0);
+}
+
+.mm_summoned {
+    filter: invert(200%) drop-shadow(0 0 15px #046C65);
+}
+
+.mm_item-sheet {
+    border: 1px solid #29333C;
+    background-image: url("/content/back.jpg");
+    font-family: Shruti;
+}
+
+.mm_element-logo {
+    position: relative;
+    height: auto;
+    width: 148px;
+    border: none;
+}
+
+.mm_name {
+    color: #046C65;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mm_weight-row {
+    margin: 7px 3px 7px 3px;
+    width: 148px;
+    padding: 4px;
+    height: 27px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10px;
+    font-weight: 200;
+    background-color: #046C65;
+    color: whitesmoke;
+    box-shadow: 0 0 5px black inset;
+}
+
+.mm_item-prop {
+    width: 70px !important;
+}
+
+.mm_weight-prop {
+    width: 50px !important;
+}
+
+.mm_wide {
+    width: 95%;
+}
+
+.mm_description {
+    padding: 8px;
+    text-align: left;
+    font-size: 16px
+}
+
+.mm_technique-sheet {
+    border: 1px solid #29333C;
+    background-image: url("/content/back.jpg");
+    font-family: Shruti;
+}
+
+.mm_element-logo_small {
+    position: relative;
+    height: 56px;
+    width: 56px;
+    border: none;
+}
+
+.mm_logo {
+    height: 56px;
+    width: 56px;
+}
+
+.mm_name-tech {
+    color: #046C65;
+    font-weight: bold;
+    font-size: 28px;
+    width: 100%;
+    font-family: Feast;
+    border: none !important;
+    background: none;
+}
+
+.mm_tier {
+    width: 40px;
+    padding-left: 8px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.mm_tier:hover {
+    background-color: #046C65;
+    color: white;
+}
+
+.mm_maxwidth {
+    width: 100%;
+}
+
+.mm_target {
+    margin: auto;
+}
+
+.mm_target input {
+    width: 350px;
+    text-align: left;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.mm_attack {
+    width: 88px;
+    border: none;
+}
+
+.mm_descriptor {
+    width: 95px;
+    border: none;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.mm_descriptor:hover {
+    background-color: #046C65;
+    color: white;
+    border-radius: 5px;
+}
+
+.mm_action {
+    width: 130px !important;
+    border: none;
+    font-size: 14px;
+    font-style: italic;
+    padding: 4px 10px 4px 10px;
+    margin: 0 10px 0 10px;
+}
+
+.mm_action:hover {
+    background-color: #046C65;
+    color: white;
+    border-radius: 5px;
+}
+
+.mm_attack:hover {
+    background-color: #046C65;
+    color: white;
+    border-radius: 5px;
+}
+
+.mm_attack_label {
+    position: absolute;
+    font-weight: bold;
+    margin-top: -15px;
+    margin-left: 2%;
+    font-size: 10px;
+    background-color: whitesmoke;
+    border: 1px solid rgba(200, 200, 200, 0.7);
+    padding: 2px 2px 0 2px;
+    border-radius: 6px;
+}
+
+.mm_effect-box {
+    font-size: 14px;
+    background-color: whitesmoke;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.mm_effect-box select {
+    cursor: pointer;
+}
+
+.mm_effect-box select:hover {
+    background-color: #046C65;
+    color: white;
+    border-radius: 5px;
+}

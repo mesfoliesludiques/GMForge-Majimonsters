@@ -1,0 +1,102 @@
+.hb_btn {
+    width: 86px;
+    height: 20px;
+    cursor: pointer;
+    background-color: #046C65;
+    color: whitesmoke;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 1px;
+    padding: 2px;
+    box-shadow: 0 0 4px black inset;
+}
+
+.hb_half {
+    width: 43px;
+}
+
+.hb_btn:hover {
+    filter: brightness(0.8);
+}
+
+.hb_panel {
+    border: 1px solid rgb(4, 108, 101);
+    background: rgba(4, 108, 101, 0.2);
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.hb_die-popout img {
+    width: 27px;
+    height: 22px;
+}
+
+.hb_die-popout img:hover {
+    filter: hue-rotate(180deg);
+}
+
+.hb_nopadding input {
+    padding: 0;
+    margin: 0;
+    height: auto;
+}
+
+.hb_select {
+    box-shadow: 0 0 12px black inset;
+    height: 30px;
+    margin: 3px 0 1px 0;
+    font-size: 14px;
+}
+
+.hb_2grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.mm_drajuledisplay {
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    margin: auto;
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px #046C65;
+}
+
+.hb_pic-max {
+    margin: auto;
+    object-fit: cover;
+    width: 36px;
+    height: 36px;
+}
+
+.hb_value {
+    background: white;
+    border-radius: 5px;
+    font-family: Feast;
+    width: 22px;
+    margin: auto;
+}
+
+.hb_panel {
+    border: 1px solid rgb(4, 108, 101);
+    background: rgba(4, 108, 101, 0.2);
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.hb_die-popout img {
+    width: 27px;
+    height: 22px;
+}
+
+.hb_die-popout img:hover {
+    filter: hue-rotate(180deg);
+}
+
+.hb_nopadding input {
+    padding: 0;
+    margin: 0;
+    height: auto;
+}
